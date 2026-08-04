@@ -11,13 +11,13 @@ class Solution {
                 ans++;
             }
         }
-    return ans;
+        return ans;
     }
 
     public void dfs(int node,int[][] isConnected){
-        visit[node]=true;
         for(int i=0;i<isConnected.length;i++){
             if(!visit[i] && isConnected[node][i]==1){
+        visit[node]=true;
                 dfs(i,isConnected);
             }
         }
