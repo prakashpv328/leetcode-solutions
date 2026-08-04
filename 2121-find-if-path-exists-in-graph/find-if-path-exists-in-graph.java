@@ -17,7 +17,7 @@ class Solution {
         if(source==destination) return true;
         set.add(source);
 
-        for(int n:graph.getOrDefault(source, new ArrayList<>())){
+        for(int n:graph.get(source)){
             if(!set.contains(n)){
                 if(dfs(n,destination)) return true;
             }
