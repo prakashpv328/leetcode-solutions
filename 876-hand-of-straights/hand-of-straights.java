@@ -1,6 +1,7 @@
 class Solution {
     public boolean isNStraightHand(int[] hand, int groupSize) {
         int n=hand.length;
+        // if(n)
         HashMap<Integer,Integer> map=new HashMap<>();
         for(int i:hand){
             map.put(i,map.getOrDefault(i,0)+1);
@@ -16,7 +17,8 @@ class Solution {
                 }
                 map.put(num,map.getOrDefault(num,0)-1);
                 if(map.get(num)==0){
-                    pq.poll();
+                    // if(i==pq.peek()) return false;
+                    pq.remove(num);
                 }
             }
         }
