@@ -7,15 +7,9 @@ class Solution {
                 return b[0]-a[0];
             return a[1]-b[1];
         });
-        System.out.print(Arrays.deepToString(people));
-           int[][] res = new int[n][2];
-         int i=0;
         for(int[] a:people){
             list.add(a[1],a);
-          
         }
-        
         return list.toArray(new int[0][]);
-        
     }
 }
