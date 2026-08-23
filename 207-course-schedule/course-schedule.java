@@ -22,7 +22,7 @@ class Solution {
             count++;
 
             for(int next:adj.get(node)){
-                System.out.print(node);
+                // System.out.print(node);
                 indegree[next]--;
                 if (indegree[next] == 0) q.add(next);
             }
