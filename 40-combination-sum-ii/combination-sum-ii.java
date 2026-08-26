@@ -15,6 +15,10 @@ class Solution {
         return;
     }
 
+    if (candidates[id] > target) {
+        return; 
+    }
+
         list.add(candidates[id]);
         combSum(id+1,list,target-candidates[id],candidates,ans);
         list.remove(list.size()-1);
