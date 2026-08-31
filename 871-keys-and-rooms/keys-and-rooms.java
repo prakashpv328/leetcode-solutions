@@ -3,15 +3,13 @@ class Solution {
         int l=rooms.size();
         int []vis=new int[l];
         Queue<Integer> q=new LinkedList<>();
-        for(int i:rooms.get(0)){
-            q.offer(i);
-            vis[0]=1;
-        }
+        vis[0]=1;
+        q.offer(0);
         while(!q.isEmpty()){
             int a=q.poll();
-            vis[a]=1;
             for(int i:rooms.get(a)){
                 if(vis[i]==0){
+                    vis[i]=1;
                     q.add(i);
                 }
             }
