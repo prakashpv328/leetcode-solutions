@@ -14,6 +14,7 @@ class Solution {
         return false;
     }
     private boolean dfs(int r ,int c,int i,int j,char[][] grid,int [][]vis,char ch){
+        if(vis[r][c]==1) return true;
         vis[r][c]=1;
         int m=grid.length;
         int n=grid[0].length;
@@ -23,13 +24,8 @@ class Solution {
             int nc=c+dir[x][1];
             if(nr>=0 && nr<m && nc>=0 && nc<n && grid[nr][nc]==ch){
                 if(nr==i && nc==j) continue;
-                if(vis[nr][nc]==0){
-                    if(dfs(nr,nc,r,c,grid,vis,grid[nr][nc]))
-                    return true;
-                }
-                else{
-                    return true;
-                }
+                if(dfs(nr,nc,r,c,grid,vis,grid[nr][nc]))
+                return true;
             }
         }
         return false;
