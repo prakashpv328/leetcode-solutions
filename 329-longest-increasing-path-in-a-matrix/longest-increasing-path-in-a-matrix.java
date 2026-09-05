@@ -1,11 +1,14 @@
 class Solution {
+    int m,n;
+    int [][]dir={{-1,0},{0,1},{1,0},{0,-1}};
+    int dp[][];
     public int longestIncreasingPath(int[][] matrix) {
         int m=matrix.length;
         int n=matrix[0].length;
         int num=0;
         int ans=0;
 
-        int dp[][]=new int[m][n]; 
+        dp=new int[m][n]; 
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 num=dfs(i,j,matrix,dp);
@@ -21,7 +24,7 @@ class Solution {
         }
         int m=matrix.length;
         int n=matrix[0].length;
-        int [][]dir={{-1,0},{0,1},{1,0},{0,-1}};
+        
         int num=0;
         for(int x=0;x<4;x++){
             int nr=r+dir[x][0];
