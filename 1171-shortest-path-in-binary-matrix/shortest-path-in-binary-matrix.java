@@ -3,7 +3,7 @@ class Solution {
         int m=grid.length;
         int n=grid[0].length;
         if(grid[0][0]==1 || grid[m-1][n-1]==1) return -1;
-        Deque<int[]> q=new LinkedList<>();
+        Deque<int[]> q=new ArrayDeque<>();
         q.offer(new int[]{0,0,1});
         int [][]dir={{-1,0},{0,1},{1,0},{0,-1},{-1,-1},{1,1},{-1,1},{1,-1}};
         while(!q.isEmpty()){
