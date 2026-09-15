@@ -1,7 +1,7 @@
 class Graph {
     int dis[][];
     int n;
-    int INF = Integer.MAX_VALUE / 2;
+    int INF = Integer.MAX_VALUE/2;
     public Graph(int n, int[][] edges) {
         this.n=n;
         dis=new int[n][n];
