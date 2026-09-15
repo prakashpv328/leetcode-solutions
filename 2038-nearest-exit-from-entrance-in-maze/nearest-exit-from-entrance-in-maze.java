@@ -2,7 +2,7 @@ class Solution {
     public int nearestExit(char[][] maze, int[] entrance) {
         int m=maze.length;
         int n=maze[0].length;
-        Queue<int[]> queue=new LinkedList<>();
+        Deque<int[]> queue=new ArrayDeque<>();
         queue.offer(new int[]{entrance[0],entrance[1],0});
         maze[entrance[0]][entrance[1]]='+';
         int [][]dir={{-1,0},{0,1},{1,0},{0,-1}};
