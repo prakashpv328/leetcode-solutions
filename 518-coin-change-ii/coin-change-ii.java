@@ -1,5 +1,4 @@
 class Solution {
-    int ans=0;
     int [][]dp;
     int l;
     public int change(int amount, int[] coins) {
