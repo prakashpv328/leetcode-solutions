@@ -6,9 +6,7 @@ class Solution {
             if(s.charAt(1)=='='){
                 int u=s.charAt(0)-'a';
                 int v=s.charAt(3)-'a';
-                int pu=ds.find(u);
-                int pv=ds.find(v);
-                if(pu!=pv) ds.union(u,v);
+                ds.union(u,v);
             }
         }
 
