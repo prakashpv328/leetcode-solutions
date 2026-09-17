@@ -1,6 +1,6 @@
 class Solution {
     public int makeConnected(int n, int[][] connections) {
-        DisjointSet ds=new DisjointSet(n+1);
+        DisjointSet ds=new DisjointSet(n);
         for(int i=0;i<connections.length;i++){
             ds.unionByRank(connections[i][0],connections[i][1]);
         }
