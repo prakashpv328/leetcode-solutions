@@ -8,22 +8,17 @@ class Solution {
         for(int i=1;i<n;i++){
             for(int j=0;j<i;j++){
                 int diff=nums[j]-nums[i];
-                ans=Math.max(ans,solve(nums,i,diff));
+                int d=500+diff;
+
+                if(dp[j][d]==0){
+                    dp[i][d]=Math.max(dp[i][d],2);
+                }
+                else {
+                    dp[i][d]=Math.max(dp[i][d],dp[j][d]+1);
+                }
+                ans=Math.max(ans,dp[i][d]);
             }
         }
         return ans;
-    }
-
-    private int solve(int[] nums,int cur,int diff) {
-        int d=500+diff;
-        if(dp[cur][d]!=0) return dp[cur][d];
-        int ans=1;
-        for(int i=0;i<cur;i++){
-            if(nums[i]-nums[cur]==diff){
-                ans=Math.max(ans,solve(nums,i,diff)+1);
-            }
-        }
-
-        return dp[cur][d]=ans;
     }
 }
