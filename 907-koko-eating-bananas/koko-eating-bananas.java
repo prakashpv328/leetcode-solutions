@@ -14,16 +14,8 @@ class Solution {
         int ans = r;
         while (l <= r) {
             int mid = l + (r - l) / 2;
-            long s = 0;
 
-            for (int p : piles) {
-                s += p / mid;
-                s += p % mid > 0 ? 1 : 0;
-                if (s > h)
-                    break;
-            }
-
-            if (s <= h) {
+            if (solve(piles,mid,h)) {
                 ans = mid;
                 r = mid - 1;
             } else {
@@ -31,5 +23,16 @@ class Solution {
             }
         }
         return ans;
+    }
+
+    private boolean solve(int []piles,int mid,int h){
+        long s=0;
+        for (int p : piles) {
+            s += p / mid;
+            s += p % mid > 0 ? 1 : 0;
+            if (s > h)
+                break;
+        }
+        return s<=h;
     }
 }
