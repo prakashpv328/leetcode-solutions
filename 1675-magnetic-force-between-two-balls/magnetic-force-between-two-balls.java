@@ -26,10 +26,10 @@ class Solution {
                 c++;
                 prev=arr[i];
             }
+        }
             if(c>=m){
                 return true;
             }
-        }
         return false;
     }
 }
