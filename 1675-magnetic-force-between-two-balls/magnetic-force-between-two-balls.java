@@ -3,7 +3,7 @@ class Solution {
         Arrays.sort(position);
         int n=position.length;
         int l=0;
-        int r=position[n-1]-position[0];
+        int r=position[n-1];
         int ans=0;
         while(l<=r){
             int mid=l+(r-l)/2;
