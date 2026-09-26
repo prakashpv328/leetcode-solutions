@@ -18,7 +18,7 @@ class Solution {
     }
 
     private int solve(int[][] matrix,int r,int c){
-        if(r==m) return 0;
+        if(r==m-1) return matrix[r][c];
         if(dp[r][c]!=Integer.MAX_VALUE) return dp[r][c];
         int down=solve(matrix,r+1,c);
         int left=Integer.MAX_VALUE,right=Integer.MAX_VALUE;
