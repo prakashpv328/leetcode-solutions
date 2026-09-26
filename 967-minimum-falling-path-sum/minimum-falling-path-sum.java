@@ -5,13 +5,29 @@ class Solution {
     public int minFallingPathSum(int[][] matrix) {
         this.m=matrix.length;
         this.n=matrix[0].length;
-        dp=new int[m][n];
+        // dp=new int[m][n];
 
-        for(int i=0;i<m;i++)
-        Arrays.fill(dp[i],Integer.MAX_VALUE);
+        // for(int i=0;i<m;i++)
+        // Arrays.fill(dp[i],Integer.MAX_VALUE);
 
+        // for(int i=0;i<n;i++){
+        //     ans=Math.min(solve(matrix,0,i),ans);
+        // }
+
+
+        for(int i=m-2;i>=0;i--){
+            for(int j=0;j<n;j++){
+                int down=matrix[i+1][j];
+                int left=Integer.MAX_VALUE,right=Integer.MAX_VALUE;
+                if(j>0) left=matrix[i+1][j-1];
+                if(j<n-1) right=matrix[i+1][j+1];
+
+                matrix[i][j]+=Math.min(down,Math.min(left,right));
+            }
+        }
+        
         for(int i=0;i<n;i++){
-            ans=Math.min(solve(matrix,0,i),ans);
+            ans=Math.min(matrix[0][i],ans);
         }
 
         return ans;
