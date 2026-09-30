@@ -15,4 +15,3 @@ select id,
 
 from Department
 Group by id
--- order by id
