@@ -17,10 +17,8 @@ class Solution {
             return 0;
         }
         if(dp[sum][i]!=-1) return dp[sum][i];
-        int n=0;
-        for(int x=i;x<l;x++){
-            n+=solve(amount,coins,x,sum+coins[x]);
-        }
-        return dp[sum][i]=n;
+        int take=solve(amount,coins,i,sum+coins[i]);
+        int skip=solve(amount,coins,i+1,sum);
+        return dp[sum][i]=take+skip;
     }
 }
