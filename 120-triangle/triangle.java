@@ -5,21 +5,25 @@ class Solution {
         this.n=triangle.size();
         dp=new int[n][n];
 
+        int []prev=new int[n];
+        
+
         for(int i=0;i<n;i++){
-            dp[n-1][i]=triangle.get(n-1).get(i);
+            prev[i]=triangle.get(n-1).get(i);
         }
 
         int right=0,left=0;
 
         for(int i=n-2;i>=0;i--){
+            int []curr=new int[i+1];
             for(int j=i;j>=0;j--){
-                right=dp[i+1][j+1];
-                left=dp[i+1][j];
-                dp[i][j]=triangle.get(i).get(j)+Math.min(right,left);
+                right=prev[j+1];
+                left=prev[j];
+                curr[j]=triangle.get(i).get(j)+Math.min(right,left);
             }
+            prev=curr;
         }
-
-        return dp[0][0];
+        return prev[0];
     }
 
     // private int solve(int r,int c,List<List<Integer>> list){
