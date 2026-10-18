@@ -4,13 +4,22 @@ class Solution {
         int l=prices.length;
 
         dp=new int[l+1][2][3];
-        for(int i=0;i<=l;i++){
+        int profit=0;
+
+        for(int i=l-1;i>=0;i--){
             for(int j=0;j<2;j++){
-                Arrays.fill(dp[i][j],-1);
+                for(int k=1;k<=2;k++){
+                    if(j==1){
+                        dp[i][j][k]=Math.max( -prices[i]+dp[i+1][0][k] , dp[i+1][1][k]);
+                    }
+                    else{
+                        dp[i][j][k]=Math.max( prices[i]+dp[i+1][1][k-1] , dp[i+1][0][k]);
+                    }
+                }
             }
         }
 
-        return solve(prices,0,true,2);
+        return dp[0][1][2];
     }
 
     private int solve(int []prices,int idx,boolean buy,int rem){
