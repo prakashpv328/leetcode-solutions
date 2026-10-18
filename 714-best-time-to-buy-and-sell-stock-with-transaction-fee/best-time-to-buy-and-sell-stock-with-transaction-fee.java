@@ -3,16 +3,20 @@ class Solution {
         int l=prices.length;
         int dp[][]=new int[l+2][2];
 
+        int []after=new int[2];
+        int []curr=new int[2];
+
         for(int i=l-1;i>=0;i--){
             for(int j=0;j<2;j++){
                 if(j==1){
-                    dp[i][j]=Math.max( -prices[i]+dp[i+1][0] , dp[i+1][1]);
+                    curr[j]=Math.max( -prices[i]+after[0] , after[1]);
                 }
                 else{
-                    dp[i][j]=Math.max( prices[i]+dp[i+1][1]-fee , dp[i+1][0]);
+                    curr[j]=Math.max( prices[i]+after[1]-fee , after[0]);
                 }
             }
+            after=curr;
         }
-        return dp[0][1];
+        return after[1];
     }
 }
