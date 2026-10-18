@@ -7,14 +7,8 @@ class Solution {
         int []curr=new int[2];
 
         for(int i=l-1;i>=0;i--){
-            for(int j=0;j<2;j++){
-                if(j==1){
-                    curr[j]=Math.max( -prices[i]+after[0] , after[1]);
-                }
-                else{
-                    curr[j]=Math.max( prices[i]+after[1]-fee , after[0]);
-                }
-            }
+            curr[1]=Math.max( -prices[i]+after[0] , after[1]);
+            curr[0]=Math.max( prices[i]+after[1]-fee , after[0]);
             after=curr;
         }
         return after[1];
