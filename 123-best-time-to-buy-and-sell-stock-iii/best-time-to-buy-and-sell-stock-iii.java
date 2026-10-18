@@ -3,23 +3,27 @@ class Solution {
     public int maxProfit(int[] prices) {
         int l=prices.length;
 
-        dp=new int[l+1][2][3];
+        // dp=new int[l+1][2][3];
+        
+        int [][]front=new int[2][3];
+        int [][]curr=new int[2][3];
         int profit=0;
 
         for(int i=l-1;i>=0;i--){
             for(int j=0;j<2;j++){
                 for(int k=1;k<=2;k++){
                     if(j==1){
-                        dp[i][j][k]=Math.max( -prices[i]+dp[i+1][0][k] , dp[i+1][1][k]);
+                        curr[j][k]=Math.max( -prices[i]+front[0][k] , front[1][k]);
                     }
                     else{
-                        dp[i][j][k]=Math.max( prices[i]+dp[i+1][1][k-1] , dp[i+1][0][k]);
+                        curr[j][k]=Math.max( prices[i]+front[1][k-1] , front[0][k]);
                     }
                 }
             }
+            front=curr;
         }
 
-        return dp[0][1][2];
+        return front[1][2];
     }
 
     private int solve(int []prices,int idx,boolean buy,int rem){
