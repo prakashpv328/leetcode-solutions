@@ -5,18 +5,22 @@ class Solution {
         this.l=nums.length;
         dp=new int[l+1][l+1];
 
+        int []prev=new int[l+1];
+        int []curr=new int[l+1];
+
         for(int i=l-1;i>=0;i--){
             for(int j=i-1;j>=-1;j--){
-                int len=dp[i+1][j+1];
+                int len=prev[j+1];
 
                 if(j==-1 || nums[i]>nums[j]){
-                    len=Math.max(len,1+dp[i+1][i+1]);
+                    len=Math.max(len,1+prev[i+1]);
                 }
-                dp[i][j+1]=len;
+                curr[j+1]=len;
             }
+            prev=curr;
         }
 
-        return dp[0][0];
+        return prev[0];
     }
 
     private int solve(int idx,int prev,int []nums){
