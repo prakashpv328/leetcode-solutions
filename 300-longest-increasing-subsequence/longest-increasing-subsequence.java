@@ -3,7 +3,7 @@ class Solution {
     int dp[][];
     public int lengthOfLIS(int[] nums) {
         this.l=nums.length;
-        dp=new int[l+1][l+1];
+        // dp=new int[l+1][l+1];
 
         int []prev=new int[l+1];
         int []curr=new int[l+1];
