@@ -8,19 +8,30 @@ class Solution {
         int []prev=new int[l+1];
         int []curr=new int[l+1];
 
-        for(int i=l-1;i>=0;i--){
-            for(int j=i-1;j>=-1;j--){
-                int len=prev[j+1];
+        // for(int i=l-1;i>=0;i--){
+        //     for(int j=i-1;j>=-1;j--){
+        //         int len=prev[j+1];
 
-                if(j==-1 || nums[i]>nums[j]){
-                    len=Math.max(len,1+prev[i+1]);
-                }
-                curr[j+1]=len;
+        //         if(j==-1 || nums[i]>nums[j]){
+        //             len=Math.max(len,1+prev[i+1]);
+        //         }
+        //         curr[j+1]=len;
+        //     }
+        //     prev=curr;
+        // }
+
+        int dp[]=new int[l];
+        Arrays.fill(dp,1);
+        int ans=0;
+        for(int i=0;i<l;i++){
+            for(int j=0;j<i;j++){
+                if(nums[i]>nums[j])
+                dp[i]=Math.max(dp[i],dp[j]+1);
             }
-            prev=curr;
+            ans=Math.max(ans,dp[i]);
         }
 
-        return prev[0];
+        return ans;
     }
 
     private int solve(int idx,int prev,int []nums){
