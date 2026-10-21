@@ -17,7 +17,7 @@ class Solution {
             return ans;
         }
 
-        if(dp[idx]!=null) return dp[idx];
+        // if(dp[idx]!=null) return dp[idx];
 
         for(int i=idx;i<n;i++){
             String str=s.substring(idx,i+1);
@@ -35,6 +35,6 @@ class Solution {
                 }
             }
         }
-        return dp[idx]=ans;
+        return ans;
     }
 }
