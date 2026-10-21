@@ -6,10 +6,25 @@ class Solution {
         this.n=s2.length();
         dp=new int[m+1][n+1];
 
-        for(int i=0;i<=m;i++)
-        Arrays.fill(dp[i],-1);
+        for(int i=1;i<=m;i++){
+            dp[i][0]=dp[i-1][0]+s1.charAt(i-1);
+        }
+        for(int j=1;j<=n;j++){
+            dp[0][j]=dp[0][j-1]+s2.charAt(j-1);
+        }
 
-        return solve(m,n,s1,s2);
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+                if(s1.charAt(i-1)==s2.charAt(j-1)){
+                    dp[i][j]=dp[i-1][j-1];
+                }
+                else{
+                    dp[i][j]=Math.min(s1.charAt(i-1)+dp[i-1][j],s2.charAt(j-1)+dp[i][j-1]);
+                }
+            }
+        }
+
+        return dp[m][n];
     }
 
     private int solve(int i,int j,String s1,String s2){
@@ -36,7 +51,6 @@ class Solution {
         if(s1.charAt(i-1)==s2.charAt(j-1)){
             ans=solve(i-1,j-1,s1,s2);
         }
-
         else{
             ans=Math.min(ans,Math.min(s1.charAt(i-1)+solve(i-1,j,s1,s2),
                                         s2.charAt(j-1)+solve(i,j-1,s1,s2)));
