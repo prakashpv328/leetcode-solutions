@@ -5,18 +5,21 @@ class Solution {
         this.m=matrix.length;
         this.n=matrix[0].length;
 
-        dp=new int[m][n];
+        dp=new int[m+1][n+1];
 
-        for(int i=0;i<m;i++){
-            Arrays.fill(dp[i],-1);
-        }
         int ans=0;
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                ans=Math.max(ans,solve(i,j,matrix));
+                
+        for(int r=1;r<=m;r++){
+            for(int c=1;c<=n;c++){
+                if(matrix[r-1][c-1]=='1'){
+                    int up=dp[r-1][c];
+                    int left=dp[r][c-1];
+                    int dig=dp[r-1][c-1];
+                    dp[r][c]=1+Math.min(up,Math.min(left,dig));
+                    ans=Math.max(ans,dp[r][c]);
+                }
             }
         }
-
         return ans*ans;
     }
 
