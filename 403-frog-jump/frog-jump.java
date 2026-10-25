@@ -20,7 +20,7 @@ class Solution {
 
         for(int i=k-1;i<=k+1;i++){
 
-            if(i<=0) continue;
+            if(i<=0 || i>=l) continue;
 
             int nextPos=stones[idx]+i;
 
