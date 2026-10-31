@@ -15,6 +15,8 @@ class Solution {
         if(i==m && j==n) return true;
         if(j==n) return false;
 
+        if(dp[i][j]!=null) return dp[i][j];
+
         boolean match=i<m && (s.charAt(i)==p.charAt(j) || p.charAt(j)=='.');
 
         boolean ans;
@@ -26,6 +28,6 @@ class Solution {
             ans=(match && solve(i+1,j+1,s,p));
         }
 
-        return ans;
+        return dp[i][j]=ans;
     }
 }
